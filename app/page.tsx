@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { FaArrowLeft, FaArrowRight, FaCircleHalfStroke } from "react-icons/fa6";
 
 type Side = "left" | "middle" | "right";
 
@@ -104,7 +105,9 @@ function VoteButton({
           ✓
         </span>
       )}
-      <span className="text-2xl">{side === "left" ? "←" : side === "right" ? "→" : "·"}</span>
+      <span className="text-2xl">
+        {side === "left" ? <FaArrowLeft /> : side === "right" ? <FaArrowRight /> : <FaCircleHalfStroke />}
+      </span>
       <span>{label}</span>
     </button>
   );
