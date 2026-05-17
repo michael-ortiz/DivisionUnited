@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { FaArrowLeft, FaArrowRight, FaCircleHalfStroke } from "react-icons/fa6";
+import { FaArrowLeft, FaArrowRight, FaCircleHalfStroke, FaGithub, FaCircleCheck } from "react-icons/fa6";
 
 type Side = "left" | "middle" | "right";
 
@@ -91,7 +91,7 @@ function VoteButton({
       onClick={onClick}
       disabled={disabled}
       className={[
-        "relative flex flex-col items-center gap-2 px-8 py-5 rounded-2xl font-bold text-lg transition-all duration-200 border-2 cursor-pointer",
+        "relative flex flex-col items-center gap-2 flex-1 py-5 rounded-2xl font-bold text-lg transition-all duration-200 border-2 cursor-pointer",
         "focus:outline-none focus-visible:ring-4",
         isMyVote
           ? `${color} border-transparent text-white scale-105 shadow-xl`
@@ -101,14 +101,12 @@ function VoteButton({
       ].join(" ")}
     >
       {isMyVote && (
-        <span className="absolute -top-2 -right-2 bg-white text-black text-xs font-black rounded-full w-6 h-6 flex items-center justify-center shadow">
-          ✓
-        </span>
+        <FaCircleCheck className="absolute -top-2 -right-2 text-white text-xl drop-shadow" />
       )}
       <span className="text-2xl">
         {side === "left" ? <FaArrowLeft /> : side === "right" ? <FaArrowRight /> : <FaCircleHalfStroke />}
       </span>
-      <span>{label}</span>
+      <span className="text-sm">{label}</span>
     </button>
   );
 }
@@ -178,6 +176,13 @@ export default function Home() {
           </p>
         </div>
 
+        {!loaded && (
+          <div className="flex flex-col items-center gap-3 py-10 text-zinc-600">
+            <div className="w-8 h-8 border-2 border-zinc-700 border-t-purple-500 rounded-full animate-spin" />
+            <span className="text-sm">Loading votes...</span>
+          </div>
+        )}
+
         {loaded && (
           <>
             <div>
@@ -191,7 +196,7 @@ export default function Home() {
               <TugBar counts={counts} />
             </div>
 
-            <div className="flex gap-4 justify-center flex-wrap">
+            <div className="flex gap-4 justify-center">
               <VoteButton
                 side="left"
                 label="Liberal"
@@ -238,21 +243,30 @@ export default function Home() {
 
         <div className="border-t border-zinc-800 pt-8 flex flex-col gap-4 text-center">
           <p className="text-zinc-200 text-base font-medium leading-relaxed max-w-lg mx-auto">
-            We built this because we&apos;re tired of being told we&apos;re enemies.
+            Why does this exist?
           </p>
           <p className="text-zinc-500 text-sm leading-relaxed max-w-lg mx-auto">
-            The headlines that outrage, the algorithms that divide. They don&apos;t speak for most of us. Most people are reasonable, nuanced, and somewhere in between. They&apos;re just quieter than the noise.
+            Honestly, we got tired of feeling like everyone hates each other. It doesn&apos;t feel true. Most people just want to live their lives, take care of the people they love, and not fight with strangers online. The ones screaming are the loudest, not the most.
           </p>
           <p className="text-zinc-500 text-sm leading-relaxed max-w-lg mx-auto">
-            Division United is a living pulse check for the world. No agenda, no winner, no sides to defeat. Just an honest look at where humanity stands, updated in real time by real people.
+            So we built something simple. A place where you can say where you stand and see that you&apos;re not alone, whatever that looks like for you.
           </p>
           <p className="text-zinc-500 text-sm leading-relaxed max-w-lg mx-auto">
-            Cast your vote. Reflect on what you see. Share it with someone who thinks differently. Come back and watch it shift. The world our kids inherit depends on whether we choose to see each other first.
+            No winners. No debate. Just people, showing up. Maybe share it with someone you disagree with. We think the number might surprise you.
           </p>
         </div>
 
-        <footer className="text-center text-zinc-700 text-xs">
-          Votes are anonymous. One per network connection.
+        <footer className="flex flex-col items-center gap-2 text-zinc-700 text-xs">
+          <a
+            href="https://github.com/michael-ortiz/DivisionUnited"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-zinc-500 hover:text-white transition-colors"
+          >
+            <FaGithub className="text-base" />
+            Open source on GitHub
+          </a>
+          <span>Votes are anonymous. One per network connection.</span>
         </footer>
       </div>
     </div>
