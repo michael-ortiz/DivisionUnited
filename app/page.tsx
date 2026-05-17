@@ -171,7 +171,7 @@ export default function Home() {
             Division <span className="text-purple-400">United</span>
           </h1>
           <p className="text-zinc-400 text-lg leading-relaxed max-w-lg mx-auto">
-            Where do you stand? Cast your anonymous vote and see where the country tilts.
+            One world. Many voices. One conversation.
           </p>
         </div>
 
@@ -179,11 +179,11 @@ export default function Home() {
           <>
             <div>
               <div className="flex justify-between text-sm font-semibold mb-3 px-1">
-                <span className="text-blue-400">← LEFT</span>
+                <span className="text-blue-400">← LIBERAL</span>
                 <span className="text-zinc-400 text-xs mt-0.5">
                   {total.toLocaleString()} total votes
                 </span>
-                <span className="text-red-400">RIGHT →</span>
+                <span className="text-red-400">CONSERVATIVE →</span>
               </div>
               <TugBar counts={counts} />
             </div>
@@ -191,7 +191,7 @@ export default function Home() {
             <div className="flex gap-4 justify-center flex-wrap">
               <VoteButton
                 side="left"
-                label="Left"
+                label="Liberal"
                 color="bg-blue-600 hover:bg-blue-500"
                 voted={!!myVote}
                 myVote={myVote}
@@ -200,7 +200,7 @@ export default function Home() {
               />
               <VoteButton
                 side="middle"
-                label="Middle"
+                label="Center"
                 color="bg-purple-600 hover:bg-purple-500"
                 voted={!!myVote}
                 myVote={myVote}
@@ -209,7 +209,7 @@ export default function Home() {
               />
               <VoteButton
                 side="right"
-                label="Right"
+                label="Conservative"
                 color="bg-red-600 hover:bg-red-500"
                 voted={!!myVote}
                 myVote={myVote}
@@ -220,8 +220,11 @@ export default function Home() {
 
             {myVote && !message && (
               <p className="text-center text-zinc-400 text-sm">
-                You voted <span className="font-bold text-white capitalize">{myVote}</span>.
-                Results update every 10 seconds.
+                You voted{" "}
+                <span className="font-bold text-white">
+                  {myVote === "left" ? "Liberal" : myVote === "right" ? "Conservative" : "Center"}
+                </span>
+                . Results update every 10 seconds.
               </p>
             )}
             {message && (
@@ -230,7 +233,22 @@ export default function Home() {
           </>
         )}
 
-        <footer className="text-center text-zinc-700 text-xs mt-4">
+        <div className="border-t border-zinc-800 pt-8 flex flex-col gap-4 text-center">
+          <p className="text-zinc-200 text-base font-medium leading-relaxed max-w-lg mx-auto">
+            We built this because we&apos;re tired of being told we&apos;re enemies.
+          </p>
+          <p className="text-zinc-500 text-sm leading-relaxed max-w-lg mx-auto">
+            The headlines that outrage, the algorithms that divide. They don&apos;t speak for most of us. Most people are reasonable, nuanced, and somewhere in between. They&apos;re just quieter than the noise.
+          </p>
+          <p className="text-zinc-500 text-sm leading-relaxed max-w-lg mx-auto">
+            Division United is a living pulse check for the world. No agenda, no winner, no sides to defeat. Just an honest look at where humanity stands, updated in real time by real people.
+          </p>
+          <p className="text-zinc-500 text-sm leading-relaxed max-w-lg mx-auto">
+            Cast your vote. Reflect on what you see. Share it with someone who thinks differently. Come back and watch it shift. The world our kids inherit depends on whether we choose to see each other first.
+          </p>
+        </div>
+
+        <footer className="text-center text-zinc-700 text-xs">
           Votes are anonymous. One per network connection.
         </footer>
       </div>
