@@ -258,7 +258,7 @@ export default function Home() {
 
         <footer className="flex flex-col items-center gap-2 text-zinc-700 text-xs">
           <a
-            href="https://github.com/michael-ortiz/DivisionUnited"
+            href="https://github.com/knightwane/DivisionUnited"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-zinc-500 hover:text-white transition-colors"
