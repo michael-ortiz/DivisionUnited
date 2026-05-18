@@ -172,7 +172,7 @@ export default function Home() {
             Division <span className="text-purple-400">United</span>
           </h1>
           <p className="text-zinc-400 text-lg leading-relaxed max-w-lg mx-auto">
-            One world. Many voices. One conversation.
+            One world. Many voices. One sentiment.
           </p>
         </div>
 
